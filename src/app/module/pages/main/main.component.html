@@ -1,1 +1,11 @@
-<p>main works!</p>
+<div class="flex flex-column"> 
+    <div class="flex justify-content-center my-3">
+        <span class="p-float-label">
+            <input id="float-search" type="text" pInputText> 
+            <label for="float-search">Search</label>
+        </span>
+    </div>       
+    <div class="col-12 flex flex-wrap justify-content-center">               
+        <app-card class="w-full mx-2 mb-2 sm:w-full md:w-3 xl:w-3" *ngFor="let movie of (movies|async)" [movie]="movie"></app-card>       
+    </div>
+</div>

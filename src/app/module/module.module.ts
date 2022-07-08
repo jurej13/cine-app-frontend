@@ -5,7 +5,9 @@ import { ModuleRoutingModule } from './module-routing.module';
 import { MainComponent } from './pages/main/main.component';
 import { SeleccionFuncionComponent } from './pages/seleccion-funcion/seleccion-funcion.component';
 import { CardComponent } from './components/card/card.component';
-
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import {HttpClientModule} from '@angular/common/http'
+import { DataManagerService } from './services/data-manager.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { CardComponent } from './components/card/card.component';
   ],
   imports: [
     CommonModule,
-    ModuleRoutingModule
-  ]
+    ModuleRoutingModule,
+    PrimeNgModule,
+    HttpClientModule
+  ],
+  providers:[DataManagerService]
 })
 export class ModuleModule { }

@@ -1,9 +1,6 @@
-<p-card  [header]="movie.name" styleClass="p-card-shadow">
+<p-card  [header]="movie.name" [routerLink]="['seleccion',movie._id]" class="cursor-pointer" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
         <img alt="Card" [src]="movie.image" [alt]="movie.name">
     </ng-template>
-    <p>{{movie.description}}</p>
-    <ng-template pTemplate="footer">
-        <p-button label="See" class="flex justify-content-center" icon="pi pi-check"></p-button>
-    </ng-template>
+    <p>{{movie.description}}</p> 
 </p-card>

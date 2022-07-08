@@ -6,9 +6,9 @@ import { SeleccionFuncionComponent } from './pages/seleccion-funcion/seleccion-f
 const routes: Routes = [
   {
     path:'',
-    component:MainComponent,
     children:[
-      {path:'seleccion',component:SeleccionFuncionComponent}
+      {path:'',component:MainComponent},
+      {path:'seleccion/:id',component:SeleccionFuncionComponent}
     ],
   },
   {

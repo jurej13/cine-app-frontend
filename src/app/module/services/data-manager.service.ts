@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, map, Observable, of } from 'rxjs';
 import { MoviesResponse } from 'src/app/interface/movies.interface';
 import { environment } from 'src/environments/environment';
-import { FunctionResponse } from '../../interface/functionResponse.interface';
+import { FunctionPopulated, FunctionResponse } from '../../interface/functionResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,12 @@ export class DataManagerService {
   getMovieById(id : string) : Observable<MoviesResponse>{
     const url : string = `${this.baseUrl}/peliculas/${id}`
     return this.http.get<MoviesResponse>(url).pipe(
+      catchError(err => of(err))
+    )
+  }
+  getFunctionById(id : string) : Observable<FunctionPopulated>{
+    const url : string = `${this.baseUrl}/funciones/function/${id}`
+    return this.http.get<FunctionPopulated>(url).pipe(
       catchError(err => of(err))
     )
   }

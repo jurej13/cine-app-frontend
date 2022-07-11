@@ -1,6 +1,7 @@
-<p-card  [header]="movie.name" [routerLink]="['seleccion',movie._id]" class="cursor-pointer" styleClass="p-card-shadow">
+<p-card  [routerLink]="['seleccion',movie._id]" class="cursor-pointer" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
-        <img alt="Card" [src]="movie.image" [alt]="movie.name">
+        <img class="m-0" [src]="movie.image" [alt]="movie.name">
     </ng-template>
-    <p>{{movie.description}}</p> 
+    <h3 class="text-center font-bold">{{movie.name}}</h3>
+    <p class="my-2">{{movie.description}}</p> 
 </p-card>

@@ -10,8 +10,9 @@
             <h3 class="text-center font-bold">Funciones disponibles: </h3>
             <div class="flex flex-wrap">
                 <div  class="my-3 mx-3 bg-yellow-600 w-3 border-round-2xl cursor-pointer" *ngFor="let funcion of (functionsResponse | async)">     
-                        <div class="m-2">{{funcion.startDate |date:'shortTime'}}
-                        {{funcion.startDate | date:'shortDate'}}</div>
+                        <div class="m-2" [routerLink]="['/main/funcion',funcion._id]">
+                            {{funcion.startDate |date:'shortTime'}}
+                            {{funcion.startDate | date:'shortDate'}}</div>
                 </div>
             </div>
         </div>
@@ -21,6 +22,5 @@
             </h1>
             <img class="w-full" [src]="movie.image" [alt]="movie.name">
         </div>
-
     </div>
 </ng-template>

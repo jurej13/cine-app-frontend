@@ -5,8 +5,7 @@ const routes: Routes = [
   {
     path:'main',
     loadChildren:()=>import('./module/module.module').then(m=>m.ModuleModule)
-  },
-  {path:'**',redirectTo:'main'}
+  }
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map, Observable, switchMap } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription, switchMap } from 'rxjs';
 import { FunctionResponse } from 'src/app/interface/functionResponse.interface';
 import { MoviesResponse } from 'src/app/interface/movies.interface';
 import { DataManagerService } from '../../services/data-manager.service';
@@ -10,19 +10,27 @@ import { DataManagerService } from '../../services/data-manager.service';
   templateUrl: './seleccion-funcion.component.html',
   styleUrls: ['./seleccion-funcion.component.css']
 })
-export class SeleccionFuncionComponent implements OnInit {
+export class SeleccionFuncionComponent implements OnInit,OnDestroy {
   functionsResponse !: Observable<FunctionResponse[]>
   movie !: MoviesResponse
-  constructor(private dataManager : DataManagerService,private route : ActivatedRoute) { }
+  suscription$ !: Subscription
+  constructor(private dataManager : DataManagerService,
+      private route : ActivatedRoute,
+      private router : Router
+      ) { }
+  
 
   ngOnInit(): void {
-    this.route.params.pipe(
+    this.suscription$ = this.route.params.pipe(
       switchMap(({id})=>this.functionsResponse=this.dataManager.getMoviesFilterName(id)),
-      map(resp=> {console.log(resp)
-      return resp
-      }),
       switchMap((resp)=>  this.dataManager.getMovieById(resp[0].movie))
       ).subscribe(resp=> this.movie = resp)
   }
-
+  ngOnDestroy(): void {
+    this.suscription$.unsubscribe();
+  }
+  goToSeleccionButaca(id: string){
+    console.log('id',id)
+    this.router.navigate(['funcion',id])
+  }
 }

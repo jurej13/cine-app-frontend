@@ -1,0 +1,35 @@
+<div *ngIf="!function;else divContenido">
+    <!-- Todo : Spinner o algo  -->
+    cargando
+</div>
+<ng-template #divContenido>
+    <h2 class="text-center font-bold mt-3">{{function.movie.name }}</h2>
+    <h3 class="text-center font-bold mt-2">Date of Movie : </h3>
+    <div class="flex  flex-column">
+        <p class="flex justify-content-center">
+            Start: {{function.startDate |date:'shortTime'}}
+            {{function.startDate | date:'shortDate'}} 
+        </p>
+        <p class="flex justify-content-center">
+            End: {{function.endDate |date:'shortTime'}}
+            {{function.endDate | date:'shortDate'}}
+        </p>
+    </div>
+    <div class="flex justify-content-center align-items-center flex-column mt-5">
+        <div class="border-1 border-round col-8 flex justify-content-center flex-wrap">
+            <app-chairs *ngFor="let key of chairsArr" [function]="function" [key]="key"></app-chairs>
+        </div>
+        <div class="border-1 border-round col-8 mt-3">
+            <div class="flex justify-content-evenly">
+                <div>
+                    <button pButton pRipple class="p-button-success" disabled="true"></button>
+                    <h3 class="flex justify-content-center align-items-center" >Chairs avalible</h3>
+                </div>
+                <div>
+                    <button pButton pRipple class="p-button-danger" disabled="true"></button>
+                    <h3 class="flex justify-content-center align-items-center">Chairs busy</h3>
+                </div>
+            </div>
+        </div>
+    </div> 
+</ng-template>

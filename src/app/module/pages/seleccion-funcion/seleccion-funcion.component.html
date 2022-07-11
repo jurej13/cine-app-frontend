@@ -1,7 +1,5 @@
-<div *ngIf="!movie;else contenido">
-    TODO:// Spinner xd
-</div>
-<ng-template #contenido>
+
+<div *ngIf="movie && functionsResponse">
     <div class="col-12 flex flex-wrap">
         <div class="col-6">
             <button pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded"
@@ -23,4 +21,4 @@
             <img class="w-full" [src]="movie.image" [alt]="movie.name">
         </div>
     </div>
-</ng-template>
+</div>

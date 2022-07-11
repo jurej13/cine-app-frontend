@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of } from 'rxjs';
 import { MoviesResponse } from 'src/app/interface/movies.interface';
+import { TicketEntry } from 'src/app/interface/ticket.interface';
 import { environment } from 'src/environments/environment';
 import { FunctionPopulated, FunctionResponse } from '../../interface/functionResponse.interface';
 
@@ -46,6 +47,11 @@ export class DataManagerService {
     return this.http.get<FunctionPopulated>(url).pipe(
       catchError(err => of(err))
     )
+  }
+
+  createTicket(date : TicketEntry):Observable<TicketEntry>{
+    const url : string = `${this.baseUrl}/entrada/create`
+    return this.http.post<TicketEntry>(url,date)
   }
 
 

@@ -1,8 +1,5 @@
-<div *ngIf="!function;else divContenido">
-    <!-- Todo : Spinner o algo  -->
-    cargando
-</div>
-<ng-template #divContenido>
+
+<div *ngIf="function">
     <h2 class="text-center font-bold mt-3">{{function.movie.name }}</h2>
     <h3 class="text-center font-bold mt-2">Date of Movie : </h3>
     <div class="flex  flex-column">
@@ -32,4 +29,4 @@
             </div>
         </div>
     </div> 
-</ng-template>
+</div>

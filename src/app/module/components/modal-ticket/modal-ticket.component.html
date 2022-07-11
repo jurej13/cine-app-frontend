@@ -1,0 +1,14 @@
+
+    <p-dialog header="Header" [(visible)]="modalDisplay" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+        [draggable]="false" [resizable]="false">
+        <div class="flex justify-content-center mb-2">
+            <span class="p-float-label">
+                <input id="float-name" type="text" pInputText [(ngModel)]="namePersona"> 
+                <label for="float-name" >Nombre y Apellido</label>
+            </span> 
+        </div>
+        <h3 class="text-center font-bold">Price : <span>{{function.price}}</span></h3>    
+        <h3 class="text-center font-bold">Chair : <span>{{keySelected}}</span></h3>    
+        <p-button (click)="createTicket()" label="Buy ticket!" styleClass="p-button-text"
+             class="flex justify-content-center m-3"></p-button> 
+    </p-dialog>

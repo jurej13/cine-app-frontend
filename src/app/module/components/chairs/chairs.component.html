@@ -1,6 +1,8 @@
 
 <div  class="m-4">
     <button pButton pRipple 
+            (click)="showModal(key)"
             [ngClass]="stylingChairs(key)"
             [label]="key.toString()" [disabled]="disabledChair"></button>
 </div>
+<app-modal-ticket [modalDisplay]="modalDisplay" [function]="function" [keySelected]="keySelected"></app-modal-ticket>

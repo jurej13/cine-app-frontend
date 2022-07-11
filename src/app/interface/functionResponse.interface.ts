@@ -7,6 +7,7 @@ export interface FunctionResponse {
     chairs:      number[];
     state:       boolean;
     movie:       string;
+    price :      number;
 }
 export interface FunctionPopulated {
     _id:         string;
@@ -17,6 +18,7 @@ export interface FunctionPopulated {
     chairs:      number[];
     state:       boolean;
     movie:       Movie;
+    price :      number;
 }
 interface Movie{
     _id : string,

@@ -10,7 +10,8 @@ export class ChairsComponent implements OnInit {
   @Input() function !: FunctionPopulated
   @Input() key !: number
   disabledChair : boolean = false
-
+  modalDisplay : boolean = false
+  keySelected !: number
   constructor() { }
 
   ngOnInit(): void {
@@ -24,5 +25,10 @@ export class ChairsComponent implements OnInit {
       return 'p-button-danger'
     }
   }
+  showModal(key : number){
+    this.keySelected = key
+    this.modalDisplay = true
+  }
+  
 
 }

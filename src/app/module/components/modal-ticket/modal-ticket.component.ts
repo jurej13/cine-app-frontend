@@ -19,15 +19,8 @@ export class ModalTicketComponent implements OnInit {
   constructor(private dataManager : DataManagerService,private router : Router) { }
 
   ngOnInit(): void {
-   
+    
   }
-
-  // "price":1000,
-  // "date":"2022-07-07T15:00:20.000Z",
-  // "chair":4,
-  // "movieName":"Piratas del Caribe",
-  // "namePersona":"Javier Jure",
-  // "function":"62c729ba30b2fffba00b00ca"
   createTicket(){
     if(this.namePersona == ''){
       this.modalDisplay = false

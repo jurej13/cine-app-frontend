@@ -17,7 +17,6 @@ export class SpinnerInterceptor implements HttpInterceptor {
     this.spinner.show()
     return next.handle(request).pipe(
       delay(1000),
-      tap(resp=> console.log('haciendo algo')),
       finalize(()=>this.spinner.hide())
     )
   }

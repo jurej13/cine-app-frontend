@@ -30,7 +30,6 @@ export class SeleccionFuncionComponent implements OnInit,OnDestroy {
     this.suscription$.unsubscribe();
   }
   goToSeleccionButaca(id: string){
-    console.log('id',id)
     this.router.navigate(['funcion',id])
   }
 }

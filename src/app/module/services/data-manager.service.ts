@@ -6,7 +6,7 @@ import { MoviesResponse } from 'src/app/interface/movies.interface';
 import { TicketEntry } from 'src/app/interface/ticket.interface';
 import { environment } from 'src/environments/environment';
 import { FunctionPopulated, FunctionResponse } from '../../interface/functionResponse.interface';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
 })

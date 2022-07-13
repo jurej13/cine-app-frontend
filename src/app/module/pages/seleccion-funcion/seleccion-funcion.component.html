@@ -9,8 +9,8 @@
             <div class="flex flex-wrap">
                 <div  class="my-3 mx-3 bg-yellow-600 w-3 border-round-2xl cursor-pointer" *ngFor="let funcion of (functionsResponse | async)">     
                         <div class="m-2" [routerLink]="['/main/funcion',funcion._id]">
-                            {{funcion.startDate |date:'shortTime'}}
-                            {{funcion.startDate | date:'shortDate'}}</div>
+                            {{funcion.startDate | date:'shortTime':'UTC -3'}}
+                            {{funcion.startDate | date:'shortDate' :'UTC -3'}}</div>
                 </div>
             </div>
         </div>

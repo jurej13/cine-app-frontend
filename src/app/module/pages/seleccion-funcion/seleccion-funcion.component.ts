@@ -14,6 +14,7 @@ export class SeleccionFuncionComponent implements OnInit,OnDestroy {
   functionsResponse !: Observable<FunctionResponse[]>
   movie !: MoviesResponse
   suscription$ !: Subscription
+  
   constructor(private dataManager : DataManagerService,
       private route : ActivatedRoute,
       private router : Router

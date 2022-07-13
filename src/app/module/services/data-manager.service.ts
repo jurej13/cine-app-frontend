@@ -6,7 +6,7 @@ import { MoviesResponse } from 'src/app/interface/movies.interface';
 import { TicketEntry } from 'src/app/interface/ticket.interface';
 import { environment } from 'src/environments/environment';
 import { FunctionPopulated, FunctionResponse } from '../../interface/functionResponse.interface';
-
+import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,9 +29,13 @@ export class DataManagerService {
           if(resp.length===0){
             this.router.navigate(['/main'])
             //TODO : algun tipo de swal o algo para indicar que no hay una funcion programada
-            throw new Error('No hay funciones programadas de esta pelicula')
-            
+            throw new Error('No hay funciones programadas de esta pelicula')       
           }
+          //TODO: fecha
+          // para usar la fecha en la hora que es, moment().format()
+          // resp.forEach(resp=>{
+          //   console.log(moment(resp.startDate).format())
+          // })
           return resp
         })
       )

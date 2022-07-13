@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ModuleRoutingModule } from './module-routing.module';
@@ -14,9 +14,8 @@ import { ButacasPipe } from './pipes/butacas.pipe';
 import { ChairsComponent } from './components/chairs/chairs.component';
 import { ModalTicketComponent } from './components/modal-ticket/modal-ticket.component';
 import { FormsModule } from '@angular/forms';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { SharedModule } from '../shared/shared.module';
 import { SpinnerInterceptor } from '../shared/interruptor/spinner.interceptor';
-import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { SpinnerComponent } from '../shared/components/spinner/spinner.component
     ButacasPipe,
     ChairsComponent,
     ModalTicketComponent,
-    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -36,8 +34,10 @@ import { SpinnerComponent } from '../shared/components/spinner/spinner.component
     PrimeNgModule,
     HttpClientModule,
     FormsModule,
-    NgxSpinnerModule
+    SharedModule,
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+
   providers:[DataManagerService,
     {provide:HTTP_INTERCEPTORS,useClass:SpinnerInterceptor,multi:true}
   ]

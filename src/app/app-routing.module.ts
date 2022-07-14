@@ -5,7 +5,12 @@ const routes: Routes = [
   {
     path:'main',
     loadChildren:()=>import('./module/module.module').then(m=>m.ModuleModule)
-  }
+  },
+  {
+    path:'auth',
+    loadChildren:()=>import('./auth/auth.module').then(m=>m.AuthModule)
+  },
+  {path:'**',redirectTo:'main'}
 ];
 
 @NgModule({

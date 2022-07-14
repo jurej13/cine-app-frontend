@@ -14,7 +14,8 @@ const routes: Routes = [
       {path:'seleccion/:id',component:SeleccionFuncionComponent},
       {path:'funcion/:id',component:SeleccionButacaComponent},
     ],
-  }
+  },
+  {path:'**',redirectTo:''}
 ];
 
 @NgModule({

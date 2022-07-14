@@ -1,5 +1,10 @@
 <!-- pi pi-user -->
 <p-button type="button" class="mr-2" (click)="displaySidebar = true" icon="pi pi-user"></p-button>
 <p-sidebar [(visible)]="displaySidebar" position="right" [baseZIndex]="10000">
-    <p-panelMenu [model]="items" [style]="{'width':'250px'}"></p-panelMenu>
+    <div *ngIf="!token;else contenido">
+        <p-panelMenu [model]="items" [style]="{'width':'250px'}"></p-panelMenu>
+    </div>
+    <ng-template #contenido>
+        <p-panelMenu [model]="items2" [style]="{'width':'250px'}"></p-panelMenu>
+    </ng-template>
 </p-sidebar>

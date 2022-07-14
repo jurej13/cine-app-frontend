@@ -28,6 +28,7 @@ export class ChairsComponent implements OnInit {
   showModal(key : number){
     this.keySelected = key
     this.modalDisplay = true
+    console.log(this.keySelected)
   }
   
 

@@ -55,4 +55,5 @@ export class ModalTicketComponent implements OnInit {
     }
     
   }
+ 
 }

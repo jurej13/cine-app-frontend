@@ -23,7 +23,7 @@ export class IconLoginComponent implements OnInit {
       {label:'Registrarme',icon:'pi pi-refresh',routerLink:'/auth/register'},
     ]
     this.items2=[
-      {label:'Logout',icon:'pi pi-refresh',routerLink:'/auth/login',command:()=>this.sharedUser.logout()}
+      {label:'Logout',icon:'pi pi-refresh',routerLink:'/main',command:()=>this.sharedUser.logout()}
     ]
   }
 

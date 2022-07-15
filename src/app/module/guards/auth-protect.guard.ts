@@ -14,7 +14,7 @@ export class AuthProtectGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.token !== null){
+    if(this.token !== null && this.token!== ''){
       Swal.fire({
         position:'center',
         icon:'error',

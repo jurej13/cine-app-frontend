@@ -12,10 +12,10 @@ export class ChairsComponent implements OnInit {
   @Input() function !: FunctionPopulated
   @Input() key !: number
   disabledChair : boolean = false
-  modalDisplay !: Observable<boolean>
+  modalDisplay !: boolean
   keySelected !: number
   constructor(private modalService : ModalService ) { 
-    this.modalDisplay = this.modalService.showModal
+    this.modalService.showModal.subscribe(resp=> this.modalDisplay = resp)
   }
 
   ngOnInit(): void {
@@ -31,7 +31,6 @@ export class ChairsComponent implements OnInit {
   }
   showModal(key : number){
     this.keySelected = key
-    console.log('deberia ser false',this.modalDisplay)
     this.modalService.showModalData= true
   }
   

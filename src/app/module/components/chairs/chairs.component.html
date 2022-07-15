@@ -5,6 +5,4 @@
             [ngClass]="stylingChairs(key)"
             [label]="key.toString()" [disabled]="disabledChair"></button>
 </div>
-<ng-container *ngIf="(modalDisplay|async)==true">
-    <app-modal-ticket   [function]="function" [keySelected]="keySelected"></app-modal-ticket>
-</ng-container>
+<!-- //TODO: mover de aca -->

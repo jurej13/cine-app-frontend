@@ -15,15 +15,13 @@ import { Observable } from 'rxjs';
 export class ModalTicketComponent implements OnInit {
   @Input() function !: FunctionPopulated
   @Input() keySelected !: number
-  modalDisplay !: boolean
+  @Input() modalDisplay : boolean = false
   ticket !: TicketEntry
   namePersona : string = '' 
   constructor(private dataManager : DataManagerService,private router : Router,private modalService: ModalService) {
-     this.modalService.showModal.subscribe(resp=> this.modalDisplay = resp)
    }
 
   ngOnInit(): void {
-    
   }
   createTicket(){
     if(this.namePersona == ''){
@@ -58,7 +56,6 @@ export class ModalTicketComponent implements OnInit {
     
   }
   changeToFalse(){
-    console.log('asd')
     this.modalService.showModalData = false
   }
  

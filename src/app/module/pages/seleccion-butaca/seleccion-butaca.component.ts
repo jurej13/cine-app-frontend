@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, switchMap } from 'rxjs';
+import { Subscription, switchMap, Observable } from 'rxjs';
 import { FunctionPopulated } from 'src/app/interface/functionResponse.interface';
+import { SharedUserService } from 'src/app/services/shared-user.service';
 import { DataManagerService } from '../../services/data-manager.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-seleccion-butaca',
@@ -13,9 +15,10 @@ export class SeleccionButacaComponent implements OnInit,OnDestroy {
   function !:FunctionPopulated
   suscription$ !: Subscription
   chairsArr : number[] = [1,2,3,4,5,6,7,8,9,10]
-
-  
-  constructor(private dataManager : DataManagerService,private route : ActivatedRoute) { }
+  keySelected !: number
+  modalDisplay !: Observable<boolean>
+  constructor(private dataManager : DataManagerService,private route : ActivatedRoute,
+    private modalService : ModalService) { }
 
   ngOnInit(): void {
     this.suscription$ = this.route.params.pipe(
@@ -24,6 +27,10 @@ export class SeleccionButacaComponent implements OnInit,OnDestroy {
   }
   ngOnDestroy(): void {
     this.suscription$.unsubscribe();
+  }
+  algo(key : any){
+    this.keySelected = key
+    this.modalDisplay = this.modalService.showModal
   }
 
   

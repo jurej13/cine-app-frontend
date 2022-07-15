@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription, switchMap } from 'rxjs';
+import { delay, map, Observable, Subscription, switchMap } from 'rxjs';
 import { FunctionResponse } from 'src/app/interface/functionResponse.interface';
 import { MoviesResponse } from 'src/app/interface/movies.interface';
 import { DataManagerService } from '../../services/data-manager.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-seleccion-funcion',
   templateUrl: './seleccion-funcion.component.html',
@@ -23,7 +23,8 @@ export class SeleccionFuncionComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.suscription$ = this.route.params.pipe(
-      switchMap(({id})=>this.functionsResponse=this.dataManager.getMoviesFilterName(id)),
+      switchMap(({id})=>this.functionsResponse=this.dataManager.getFunctionsFilterName(id)),
+      delay(1500),
       switchMap((resp)=>  this.dataManager.getMovieById(resp[0].movie))
       ).subscribe(resp=> this.movie = resp)
   }

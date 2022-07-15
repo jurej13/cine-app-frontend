@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, map, Observable, of } from 'rxjs';
+import {  Observable, of } from 'rxjs';
+import { catchError, map,filter} from 'rxjs/operators';
 import { MoviesResponse } from 'src/app/interface/movies.interface';
 import { TicketEntry } from 'src/app/interface/ticket.interface';
 import { environment } from 'src/environments/environment';
 import { FunctionPopulated, FunctionResponse } from '../../interface/functionResponse.interface';
 import Swal from 'sweetalert2'
+import * as moment from 'moment';
 // import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,7 @@ export class DataManagerService {
       catchError(err => of(err))
     )
   }
-  getMoviesFilterName(id: string) : Observable<FunctionResponse[]>{
+  getFunctionsFilterName(id: string) : Observable<FunctionResponse[]>{
     const url : string = `${this.baseUrl}/funciones/${id}`
     return this.http.get<FunctionResponse[]>(url)
       .pipe(
@@ -38,11 +40,20 @@ export class DataManagerService {
               this.router.navigate(['/main'])
             })              
           }
-          //TODO: fecha
-          // para usar la fecha en la hora que es, moment().format()
-          // resp.forEach(resp=>{
-          //   console.log(moment(resp.startDate).format())
-          // })
+          return resp.filter(resp=> moment().isBefore(moment(resp.startDate).format()))
+        }),
+        map(resp=>{
+          if(resp.length===0){
+            Swal.fire({
+              position:'center',
+              icon:'error',
+              title:'This film doesnt have a function programed.',
+              showConfirmButton:false,
+              timer:1500
+            }).finally(()=>{
+              this.router.navigate(['/main'])
+            }) 
+          }
           return resp
         })
       )

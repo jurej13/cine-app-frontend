@@ -41,21 +41,21 @@ export class DataManagerService {
             })              
           }
           return resp.filter(resp=> moment().isBefore(moment(resp.startDate).format()))
-        }),
-        map(resp=>{
-          if(resp.length===0){
-            Swal.fire({
-              position:'center',
-              icon:'error',
-              title:'This film doesnt have a function programed.',
-              showConfirmButton:false,
-              timer:1500
-            }).finally(()=>{
-              this.router.navigate(['/main'])
-            }) 
-          }
-          return resp
         })
+        // map(resp=>{
+        //   if(resp.length===0){
+        //     Swal.fire({
+        //       position:'center',
+        //       icon:'error',
+        //       title:'This film doesnt have a function programed.',
+        //       showConfirmButton:false,
+        //       timer:1500
+        //     }).finally(()=>{
+        //       this.router.navigate(['/main'])
+        //     }) 
+        //   }
+        //   return resp
+        // })
       )
   }
   getMovieById(id : string) : Observable<MoviesResponse>{

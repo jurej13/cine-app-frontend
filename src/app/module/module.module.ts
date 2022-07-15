@@ -14,6 +14,8 @@ import { ChairsComponent } from './components/chairs/chairs.component';
 import { ModalTicketComponent } from './components/modal-ticket/modal-ticket.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CacheInterceptor } from './interceptors/cache.interceptor';
 
 @NgModule({
   declarations: [

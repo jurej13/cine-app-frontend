@@ -25,6 +25,7 @@ export class ModalTicketComponent implements OnInit {
   }
   createTicket(){
     if(this.namePersona == ''){
+      this.modalService.showModalData = false
       Swal.fire({
         position: 'center',
         icon: 'error',
@@ -33,6 +34,7 @@ export class ModalTicketComponent implements OnInit {
         timer: 1500
       })
     }else{
+      this.modalService.showModalData = false
       this.ticket = {
         price : this.function.price,
         date : this.function.startDate,

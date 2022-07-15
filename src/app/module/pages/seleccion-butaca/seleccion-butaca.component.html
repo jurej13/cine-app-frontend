@@ -17,7 +17,7 @@
     </div>
     <div class="flex justify-content-center align-items-center flex-column mt-5">
         <div class="border-1 border-round col-8 flex justify-content-center flex-wrap">
-            <app-chairs *ngFor="let key of chairsArr" [function]="function" [key]="key" (click)="algo(key)"></app-chairs>
+            <app-chairs *ngFor="let key of chairsArr" [function]="function" [key]="key" (click)="selectorKey(key)"></app-chairs>
         </div>
         <div class="border-1 border-round col-8 mt-3">
             <div class="flex justify-content-evenly">

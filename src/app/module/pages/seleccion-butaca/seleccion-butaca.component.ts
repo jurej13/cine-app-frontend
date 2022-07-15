@@ -28,7 +28,7 @@ export class SeleccionButacaComponent implements OnInit,OnDestroy {
   ngOnDestroy(): void {
     this.suscription$.unsubscribe();
   }
-  algo(key : any){
+  selectorKey(key : number){
     this.keySelected = key
     this.modalDisplay = this.modalService.showModal
   }

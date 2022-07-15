@@ -4,6 +4,8 @@ import { FunctionPopulated } from 'src/app/interface/functionResponse.interface'
 import { TicketEntry } from 'src/app/interface/ticket.interface';
 import Swal from 'sweetalert2';
 import { DataManagerService } from '../../services/data-manager.service';
+import { ModalService } from '../../services/modal.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-ticket',
@@ -11,19 +13,20 @@ import { DataManagerService } from '../../services/data-manager.service';
   styleUrls: ['./modal-ticket.component.css']
 })
 export class ModalTicketComponent implements OnInit {
-  @Input() modalDisplay : boolean = false
   @Input() function !: FunctionPopulated
   @Input() keySelected !: number
+  modalDisplay !: boolean
   ticket !: TicketEntry
   namePersona : string = '' 
-  constructor(private dataManager : DataManagerService,private router : Router) { }
+  constructor(private dataManager : DataManagerService,private router : Router,private modalService: ModalService) {
+     this.modalService.showModal.subscribe(resp=> this.modalDisplay = resp)
+   }
 
   ngOnInit(): void {
     
   }
   createTicket(){
     if(this.namePersona == ''){
-      this.modalDisplay = false
       Swal.fire({
         position: 'center',
         icon: 'error',
@@ -40,7 +43,6 @@ export class ModalTicketComponent implements OnInit {
         namePersona : this.namePersona,
         function : this.function._id
       }
-      this.modalDisplay=false;
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -54,6 +56,10 @@ export class ModalTicketComponent implements OnInit {
         })})
     }
     
+  }
+  changeToFalse(){
+    console.log('asd')
+    this.modalService.showModalData = false
   }
  
 }

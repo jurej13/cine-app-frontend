@@ -6,6 +6,7 @@ import { MoviesResponse } from 'src/app/interface/movies.interface';
 import { TicketEntry } from 'src/app/interface/ticket.interface';
 import { environment } from 'src/environments/environment';
 import { FunctionPopulated, FunctionResponse } from '../../interface/functionResponse.interface';
+import Swal from 'sweetalert2'
 // import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,15 @@ export class DataManagerService {
       .pipe(
         map(resp=>{
           if(resp.length===0){
-            this.router.navigate(['/main'])
-            //TODO : algun tipo de swal o algo para indicar que no hay una funcion programada
-            throw new Error('No hay funciones programadas de esta pelicula')       
+            Swal.fire({
+              position:'center',
+              icon:'error',
+              title:'This film doesnt have a function programed.',
+              showConfirmButton:false,
+              timer:1500
+            }).finally(()=>{
+              this.router.navigate(['/main'])
+            })              
           }
           //TODO: fecha
           // para usar la fecha en la hora que es, moment().format()

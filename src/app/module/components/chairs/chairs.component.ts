@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FunctionPopulated } from 'src/app/interface/functionResponse.interface';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-chairs',
@@ -10,9 +12,11 @@ export class ChairsComponent implements OnInit {
   @Input() function !: FunctionPopulated
   @Input() key !: number
   disabledChair : boolean = false
-  modalDisplay : boolean = false
+  modalDisplay !: Observable<boolean>
   keySelected !: number
-  constructor() { }
+  constructor(private modalService : ModalService ) { 
+    this.modalDisplay = this.modalService.showModal
+  }
 
   ngOnInit(): void {
   }
@@ -27,8 +31,8 @@ export class ChairsComponent implements OnInit {
   }
   showModal(key : number){
     this.keySelected = key
-    this.modalDisplay = true
-    console.log(this.keySelected)
+    console.log('deberia ser false',this.modalDisplay)
+    this.modalService.showModalData= true
   }
   
 
